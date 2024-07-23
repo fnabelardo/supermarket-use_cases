@@ -3,7 +3,7 @@ using UseCases.DataStorePluginInterfaces;
 
 namespace UseCases.CategoriesUseCases;
 
-public class AddCategoryUseCase
+public class AddCategoryUseCase : IAddCategoryUseCase
 {
     private readonly ICategoryRepository _categoryRepository;
 
