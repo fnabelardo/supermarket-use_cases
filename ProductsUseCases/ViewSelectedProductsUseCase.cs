@@ -15,6 +15,6 @@ public class ViewSelectedProductsUseCase : IViewSelectedProductsUseCase
 
     public Product? Execute(int productId, bool loadCategory = false)
     {
-        return _productRepository.GetProductById(productId, loadCategory);
+        return _productRepository.GetProductById(productId, true);
     }
 }
