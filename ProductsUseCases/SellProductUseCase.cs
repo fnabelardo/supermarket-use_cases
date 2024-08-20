@@ -20,8 +20,10 @@ public class SellProductUseCase : ISellProductUseCase
         var product = _productRepository.GetProductById(productId, true);
         if (product == null) return;
 
-        _recordTransactionUseCase.Execute(cashier, productId, product.Name, product.Price.Value, product.Quantity.Value,
-            qtyToSell);
+        if (product is { Price: not null, Quantity: not null })
+            _recordTransactionUseCase.Execute(cashier, productId, product.Name, product.Price.Value,
+                product.Quantity.Value,
+                qtyToSell);
         product.Quantity -= qtyToSell;
         _productRepository.UpdateProduct(productId, product);
     }
